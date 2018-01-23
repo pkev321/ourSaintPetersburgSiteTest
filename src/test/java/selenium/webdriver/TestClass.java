@@ -1,15 +1,14 @@
 package selenium.webdriver;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import selenium.webdriver.oursp.pages.Main;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,6 +18,7 @@ public class TestClass {
 
     private WebDriver driver;
     private AssertJUnit Assert;
+    private Main mainPage;
 
     @BeforeSuite
     public void suiteSetUps() {
@@ -31,18 +31,14 @@ public class TestClass {
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get(URL);
+        mainPage = new Main(driver);
     }
-
 
     @Test
     void openPageTest() {
 
-        Assert.assertTrue(driver.getTitle().contains("Портал"));
-
+        Assert.assertTrue(mainPage.getTitle().contains("Портал"));
     }
-
-
-
 
     @AfterMethod
     public void tearDown() {
