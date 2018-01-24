@@ -17,5 +17,11 @@ public class Main {
         return driver.getTitle();
     }
 
+    public SearchAddrPage moveToSearchAddrPage() {
+
+    }
+
+
+
 
 }

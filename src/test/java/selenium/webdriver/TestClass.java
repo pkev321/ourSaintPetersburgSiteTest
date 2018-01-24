@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import selenium.webdriver.oursp.pages.Main;
+import selenium.webdriver.oursp.pages.SearchAddrPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,6 +39,12 @@ public class TestClass {
     void openPageTest() {
 
         Assert.assertTrue(mainPage.getTitle().contains("Портал"));
+    }
+
+    @Test
+    void searchByAddressTest() {
+        SearchAddrPage searchPage = mainPage.moveToSearchAddrPage();
+        searchPage.SearchAddr("Восстания 1");
     }
 
     @AfterMethod
