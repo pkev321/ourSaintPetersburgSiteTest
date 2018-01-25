@@ -17,8 +17,8 @@ public class SearchAddrPage {
         this.driver = driver;
         header = new Header(driver);
 
-        searchString = driver.findElement(By.xpath("//*[contains(text(),'Сообщения')]"));
-        searchButton = driver.findElement(By.xpath("//*[contains(text(),'Городские программы')]"));
+        searchString = driver.findElement(By.xpath("//*[contains(@class, 'form-control')]"));
+        searchButton = driver.findElement(By.xpath("//*[contains(@class, 'input-group-btn')]"));
     }
 
     public void SearchAddr(String addr) {

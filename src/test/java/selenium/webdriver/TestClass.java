@@ -8,6 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import selenium.webdriver.oursp.pages.DistrictPrograms;
+import selenium.webdriver.oursp.pages.Facilities;
 import selenium.webdriver.oursp.pages.Main;
 import selenium.webdriver.oursp.pages.SearchAddrPage;
 
@@ -20,6 +22,9 @@ public class TestClass {
     private WebDriver driver;
     private AssertJUnit Assert;
     private Main mainPage;
+
+    private static final String titleMainPage = "Портал";
+    private static final String searchAddr = "г.Санкт-Петербург, улица Восстания, дом 1, литера Т";
 
     @BeforeSuite
     public void suiteSetUps() {
@@ -38,14 +43,29 @@ public class TestClass {
     @Test
     void openPageTest() {
 
-        Assert.assertTrue(mainPage.getTitle().contains("Портал"));
+        Assert.assertTrue(mainPage.getTitle().contains(titleMainPage));
     }
 
     @Test
     void searchByAddressTest() {
         SearchAddrPage searchPage = mainPage.moveToSearchAddrPage();
-        searchPage.SearchAddr("Восстания 1");
+        searchPage.SearchAddr(searchAddr);
+
+        Facilities facility = new Facilities(driver);
+        Assert.assertTrue(facility.getProblemsCount() > 0);
     }
+
+    @Test
+    public void districtProgramsTest() {
+
+        DistrictPrograms districtPrograms = mainPage.moveToDistrictPrograms();
+        districtPrograms
+
+    }
+
+
+
+
 
     @AfterMethod
     public void tearDown() {

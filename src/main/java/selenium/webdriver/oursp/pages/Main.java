@@ -5,12 +5,12 @@ import selenium.webdriver.oursp.elements.Header;
 
 public class Main {
     private WebDriver driver;
-    private Header Header;
+    private Header header;
 
 
     public Main(WebDriver driver) {
         this.driver = driver;
-        Header = new Header(driver);
+        header = new Header(driver);
     }
 
     public String getTitle() {
@@ -18,7 +18,11 @@ public class Main {
     }
 
     public SearchAddrPage moveToSearchAddrPage() {
+        return header.gotoSearchByAddrPage();
+    }
 
+    public DistrictPrograms moveToDistrictPrograms() {
+        return header.gotoDistrictProgramsPage();
     }
 
 
