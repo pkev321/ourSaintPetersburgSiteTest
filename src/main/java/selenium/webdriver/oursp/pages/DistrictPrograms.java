@@ -7,6 +7,8 @@ import selenium.webdriver.oursp.elements.FilterPrograms;
 import selenium.webdriver.oursp.elements.Header;
 import selenium.webdriver.oursp.elements.ProblemsList;
 
+import java.util.List;
+
 public class DistrictPrograms {
 
     private WebDriver driver;
@@ -17,6 +19,10 @@ public class DistrictPrograms {
     private WebElement buttonProgramCity;
     private WebElement buttonProgramProject;
     private WebElement buttonProgramCurrent;
+
+    private List<WebElement> tableObjects;
+
+
 
 
     public DistrictPrograms(WebDriver driver) {
@@ -31,6 +37,13 @@ public class DistrictPrograms {
 
     public FilterPrograms getFilterPrograms() {
         return filterPrograms;
+    }
+
+    public List<WebElement> getTableObjects() {
+
+        tableObjects = driver.findElements(By.xpath("//*[contains(@class,'table program-list')]//a"));
+
+        return tableObjects;
     }
 
 

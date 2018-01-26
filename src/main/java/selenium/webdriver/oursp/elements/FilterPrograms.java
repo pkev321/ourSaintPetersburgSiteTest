@@ -15,20 +15,35 @@ public class FilterPrograms {
     private WebElement districtField;
     private WebElement searchButton;
 
+    private WebElement searchField;
+    private WebElement searchButton2;
+
     public FilterPrograms(WebDriver driver) {
         this.driver = driver;
         yearField = driver.findElement(By.xpath("//*[contains(@id,'react-select-2--value-item')]"));
         districtField = driver.findElement(By.xpath("//*[contains(@id,'react-select-3--value-item')]"));
         searchButton = driver.findElement(By.xpath("//*[contains(@class,'btn btn-primary')]"));
+
+
+
+        searchField = driver.findElement(By.xpath("//*[contains(@name,'search')]"));
+        searchButton2 = driver.findElement(By.xpath("//*[contains(@role,'search-btn')]"));
+
+
     }
 
     public void FindProgram(@Nullable String year, @Nullable String district ) {
 
-        String dasda  = yearField.sgetText();
+        String dasda  = yearField.getText();
 
         yearField.sendKeys(year);
         districtField.sendKeys(district);
         searchButton.click();
+    }
+
+    public void FindProgram(String searchString) {
+        searchField.sendKeys(searchString);
+        searchButton2.click();
     }
 
 

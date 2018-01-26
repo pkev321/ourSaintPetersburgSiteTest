@@ -59,8 +59,9 @@ public class TestClass {
     public void districtProgramsTest() {
 
         DistrictPrograms districtPrograms = mainPage.moveToDistrictPrograms();
-        districtPrograms.getFilterPrograms().FindProgram("2017", null);
-
+        districtPrograms.getFilterPrograms().FindProgram("2017");
+        int projectsSize = districtPrograms.getTableObjects().size();
+        Assert.assertTrue(projectsSize > 0);
     }
 
 
