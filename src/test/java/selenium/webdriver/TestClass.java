@@ -59,12 +59,9 @@ public class TestClass {
     public void districtProgramsTest() {
 
         DistrictPrograms districtPrograms = mainPage.moveToDistrictPrograms();
-        districtPrograms
+        districtPrograms.getFilterPrograms().FindProgram("2017", null);
 
     }
-
-
-
 
 
     @AfterMethod
